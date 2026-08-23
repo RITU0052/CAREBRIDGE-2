@@ -1,0 +1,33 @@
+name: carebridge_ai
+description: "CareBridge AI - One Platform to Manage Parents' Health Remotely"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.1                         # API calls to the backend
+  shared_preferences: ^2.2.3           # persist JWT token + user info locally
+  provider: ^6.1.2                     # simple app-wide state management
+  intl: ^0.19.0                        # date formatting
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.2.1                 # Inter & premium typography
+  lucide_icons: ^0.257.0                 # Modern minimal icons
+  fl_chart: ^0.69.0                    # health vitals charts
+  shimmer: ^3.0.0                      # skeleton loading states
+  file_picker: ^8.0.0
+  url_launcher: ^6.3.0
+  http_parser: ^4.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
