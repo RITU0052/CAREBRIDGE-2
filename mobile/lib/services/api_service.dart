@@ -14,7 +14,8 @@ class ApiConfig {
         defaultTargetPlatform == TargetPlatform.linux) {
       return 'http://localhost:8000/api';
     }
-    return 'http://10.0.2.2:8000/api';
+    // Updated for physical phone & Android emulator on local Wi-Fi network (PC IP: 192.168.1.35)
+    return 'http://192.168.1.35:8000/api';
   }
 }
 

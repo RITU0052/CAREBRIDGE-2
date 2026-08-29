@@ -3,7 +3,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./carebridge.db")
+raw_url = os.environ.get("DATABASE_URL", "").strip()
+if raw_url:
+    SQLALCHEMY_DATABASE_URL = raw_url
+elif os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+    SQLALCHEMY_DATABASE_URL = "sqlite:////tmp/carebridge.db"
+else:
+    SQLALCHEMY_DATABASE_URL = "sqlite:///./carebridge.db"
 
 # In SQLite, setting check_same_thread=False is needed for FastAPI
 engine = create_engine(

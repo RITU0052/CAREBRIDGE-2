@@ -4,9 +4,9 @@ from typing import Optional
 import bcrypt
 from jose import JWTError, jwt
 
-SECRET_KEY = os.getenv("JWT_SECRET", "carebridge-secret-key-production-upgrade-2026-safe-token")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
+SECRET_KEY = os.getenv("JWT_SECRET", os.getenv("SECRET_KEY", "carebridge-secret-key-production-upgrade-2026-safe-token"))
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", str(60 * 24 * 7)))
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     try:
